@@ -41,27 +41,27 @@ const SinglePost = ({ categories, slug }) => {
                 </p>
               </div>
             </div>
-            <Link href={`/post/${post.slug}`}>
-              <div className='transition duration-600 hover:-translate-x-2 hover:bg-indigo-700 hover:text-white absolute arrow-btn -left-4 text-center py-3 px-3 top-20 mt-9 cursor-pointer bg-white rounded-full'>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  className='h-6 text-indigo w-full'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  stroke='currentColor'
-                  width={20}
-                  height={20}
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth='2'
-                    d='M10 19l-7-7m0 0l7-7m-7 7h18'
-                  />
-                </svg>
-              </div>
-            </Link>
           </div>
+          <Link href={`/post/${post.slug}`}>
+            <div className='tranition duration-500 hover:-translate-x-3 hover:bg-indigo-700 hover:text-white absolute arrow-btn -left-4 top-20 mt-10 text-center py-3 px-3 cursor-pointer bg-white rounded-full'>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                className='h-6 text-indigo w-full'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+                width={20}
+                height={20}
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M10 19l-7-7m0 0l7-7m-7 7h18'
+                />
+              </svg>
+            </div>
+          </Link>
         </div>
       ))}
     </div>
