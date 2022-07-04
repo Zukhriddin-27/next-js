@@ -49,6 +49,8 @@ const SinglePost = ({ categories, slug }) => {
                   fill='none'
                   viewBox='0 0 24 24'
                   stroke='currentColor'
+                  width={20}
+                  height={20}
                 >
                   <path
                     strokeLinecap='round'
