@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import Image from 'next/image'
+
 const PostDetail = ({ post }) => {
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text
@@ -16,6 +16,7 @@ const PostDetail = ({ post }) => {
         modifiedText = <u key={index}>{text}</u>
       }
     }
+
     switch (type) {
       case 'heading-three':
         return (
@@ -25,7 +26,6 @@ const PostDetail = ({ post }) => {
             ))}
           </h3>
         )
-
       case 'paragraph':
         return (
           <p key={index} className='mb-8'>
@@ -36,8 +36,7 @@ const PostDetail = ({ post }) => {
         )
       case 'image':
         return (
-          <Image
-            unoptimized
+          <img
             src={obj.src}
             alt={obj.title}
             key={index}
@@ -56,7 +55,7 @@ const PostDetail = ({ post }) => {
         <img
           src={post.featuredImage.url}
           alt={post.title}
-          className='object-top h-full w-full rounded-t-lg'
+          className='object h-full w-full rounded-t-lg'
         />
       </div>
       <div className='px-4 lg:px-0'>

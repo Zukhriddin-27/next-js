@@ -3,7 +3,6 @@ import Image from 'next/image'
 import moment from 'moment'
 import Link from 'next/link'
 const FeaturedPostsCard = ({ post }) => {
-  console.log(post)
   return (
     <div className='relative h-72'>
       <div

@@ -206,3 +206,33 @@ export const getFeaturedPosts = async () => {
   const result = await request(graphqlAPI, query)
   return result.posts
 }
+
+export const getSingleSimilarPosts = async (categories, slug) => {
+  const query = gql`
+    query GetPostDetails($slug: String!, $categories: [String!]) {
+      posts(
+        where: {
+          slug_not: $slug
+          AND: { categories_some: { slug_in: $categories } }
+        }
+        first: 1
+      ) {
+        title
+        featuredImage {
+          url
+        }
+        createdAt
+        slug
+        author {
+          name
+          photo {
+            url
+          }
+        }
+      }
+    }
+  `
+
+  const result = await request(graphqlAPI, query, { categories, slug })
+  return result.posts
+}
