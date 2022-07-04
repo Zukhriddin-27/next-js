@@ -1,5 +1,6 @@
 import React from 'react'
 import moment from 'moment'
+import Image from 'next/image'
 const PostDetail = ({ post }) => {
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text
@@ -35,12 +36,13 @@ const PostDetail = ({ post }) => {
         )
       case 'image':
         return (
-          <img
+          <Image
+            unoptimized
             src={obj.src}
             alt={obj.title}
             key={index}
-            // width={obj.width}
-            // height={obj.height}
+            width={obj.width}
+            height={obj.height}
           />
         )
       default:
@@ -49,19 +51,17 @@ const PostDetail = ({ post }) => {
   }
 
   return (
-    <div className='bg-white rounded-lg shadow-lg px-8 lg:p-8 pb-12 mb-12'>
-      <div className='relative overflow-hidden flex  shadow-md mb-6 '>
+    <div className='bg-white rounded-lg shadow-lg lg:p-8 pb-12 mb-12'>
+      <div className='relative overflow-hidden shadow-md mb-6'>
         <img
           src={post.featuredImage.url}
           alt={post.title}
-          className='object-top h-full  rounded-t-lg'
-          style={{ width: '100%', height: '500px' }}
+          className='object-top h-full w-full rounded-t-lg'
         />
       </div>
-
       <div className='px-4 lg:px-0'>
         <div className='flex items-center mb-8 w-full'>
-          <div className='flex items-center justify-center mb-4 lg:mb-0 w-full lg:w-auto mr-8'>
+          <div className='flex items-center mb-4 lg:mb-0 w-full lg:w-auto mr-8'>
             <img
               src={post.author.photo.url}
               alt={post.author.name}
@@ -91,14 +91,14 @@ const PostDetail = ({ post }) => {
             <span>{moment(post.createdAt).format('MMM DD, YYYY')}</span>
           </div>
         </div>
+        <h1 className='mb-8 text-3xl font-semibold'>{post.title}</h1>
+        {post.content.raw.children.map((typeObj, index) => {
+          const children = typeObj.children.map((item, itemIndex) =>
+            getContentFragment(itemIndex, item.text, item)
+          )
+          return getContentFragment(index, children, typeObj, typeObj.type)
+        })}
       </div>
-      <h1 className=' mb-8 text-3xl font-semibold'>{post.title}</h1>
-      {post.content.raw.children.map((typeObj, index) => {
-        const children = typeObj.children.map((item, itemIndex) =>
-          getContentFragment(itemIndex, item.text, item)
-        )
-        return getContentFragment(index, children, typeObj, typeObj.type)
-      })}
     </div>
   )
 }

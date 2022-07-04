@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import Link from 'next/link'
+import Image from 'next/image'
 const PostCard = ({ post }) => {
   return (
     <div className='bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8'>
@@ -11,7 +12,8 @@ const PostCard = ({ post }) => {
       </h1>
       <div className=' block lg:flex text-center items-center justify-center mb-8 w-full'>
         <div className='flex items-center justify-center mb-4 lg:mb-0 w-full lg:w-auto mr-8'>
-          <img
+          <Image
+            unoptimized
             src={post.author.photo.url}
             alt={post.author.name}
             width='30px'
@@ -41,10 +43,11 @@ const PostCard = ({ post }) => {
         </div>
       </div>
       <div className='relative overflow-hidden shadow-md pb-80   '>
-        <img
+        <Image
+          unoptimized
           src={post.featuredImage.url}
           alt={post.title}
-          className='object-top absolute h-80 w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg px-2   '
+          className='object-top absolute h-full w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg px-2   '
         />
       </div>
       <p className='text-center text-lg text-gray-700 font-normal px-4 lg:px-20 mb-8 mt-4'>
